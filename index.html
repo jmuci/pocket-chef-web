@@ -1,0 +1,105 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pocket Chef — Vibrant meal planning</title>
+  <meta name="description" content="Pocket Chef: vibrant, modern meal planning, grocery lists, and recipe tracking. Built by Jose — Senior Android & Kotlin engineer." />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#b6c192">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <img src="assets/Chef AI Logo .jpeg" alt="Pocket Chef logo" style="width:100%;height:100%;object-fit:cover" />
+        </div>
+        <div>
+          <div class="title">Pocket Chef</div>
+          <div class="subtitle">Vibrant · Modern · Fast</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <a class="btn" href="#download">Get on Play</a>
+        <button id="themeToggle" class="btn secondary" aria-label="Toggle theme">Toggle</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="hero">
+        <div>
+          <div style="display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,#d4e9a6,#b6c192);color:white;font-weight:800;margin-bottom:12px">Beta • Early Access</div>
+          <h1>Plan meals in minutes. Cook with confidence.</h1>
+          <p class="lead">Pocket Chef turns recipes into weekly plans and grocery lists with a beautiful, distraction-free experience. Spend less time planning and more time eating well.</p>
+
+          <div class="ctas">
+            <a id="download" class="btn" href="#">Get it on Google Play</a>
+            <a class="btn secondary" href="#features">Why Pocket Chef</a>
+          </div>
+
+          <div style="margin-top:18px;">
+            <form id="signup" action="https://formspree.io/f/your-form-id" method="POST" style="display:flex;gap:8px;align-items:center">
+              <input name="email" type="email" placeholder="Your email" required style="padding:12px;border-radius:12px;border:1px solid rgba(0,0,0,0.06);min-width:260px" />
+              <button class="btn" type="submit">Join waitlist</button>
+            </form>
+            <div style="color:var(--muted);font-size:13px;margin-top:8px">No spam — early access invites only.</div>
+          </div>
+        </div>
+
+        <aside class="mockup" aria-hidden="true">
+          <div class="mockphone">
+            <img src="assets/produce splash screen w logo and message.jpeg" alt="app splash" />
+          </div>
+        </aside>
+      </section>
+
+      <section id="features" style="margin-top:12px" aria-label="features">
+        <div class="features">
+          <div class="card"><h3>Plan faster</h3><p class="muted">Build a week from recipes, scale servings, and copy past weeks.</p></div>
+          <div class="card"><h3>Shop smarter</h3><p class="muted">Auto-grouped shopping lists so you move through the store quickly.</p></div>
+          <div class="card"><h3>Save recipes</h3><p class="muted">Import, tag, and rate recipes; notes stick with the dish.</p></div>
+        </div>
+      </section>
+
+      <section style="margin-top:18px">
+        <h2 style="margin:8px 0;font-size:22px">Real app screenshots</h2>
+        <div class="gallery" role="list">
+          <img src="assets/Home.png" alt="Home screenshot" />
+          <img src="assets/MyCollection.png" alt="Collection screenshot" />
+        </div>
+      </section>
+
+      <section style="margin-top:12px">
+        <h2 style="margin:8px 0;font-size:22px">About the builder</h2>
+        <div class="about">
+          <div class="avatar"><img src="assets/profile.jpeg" alt="Profile" style="width:100%;height:100%;object-fit:cover"/></div>
+          <div class="bio"><strong>Jose — Senior Android & Backend Engineer</strong>
+            <div class="kv">10+ years shipping Android apps and production Kotlin backends. Focused on clean architecture, testability, and performance. Previously at Spotify. I build pragmatic, reliable apps tuned for delightful UX.</div>
+            <p class="muted" style="margin-top:10px">I design Pocket Chef to be fast, light, and practical — perfect for busy families.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© Pocket Chef — Built with care</div>
+      <div style="display:flex;gap:12px"><a class="muted" href="#">Privacy</a><a class="muted" href="#">Terms</a></div>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      var t = document.getElementById('themeToggle');
+      var s = (function(){ try{ return localStorage.getItem('pc-theme-v3'); }catch(e){ return null } })();
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      function setTheme(d){ if(d) document.documentElement.setAttribute('data-theme','dark'); else document.documentElement.removeAttribute('data-theme'); try{ localStorage.setItem('pc-theme-v3', d ? 'dark' : 'light'); }catch(e){} }
+      if(s) setTheme(s==='dark'); else setTheme(prefersDark);
+      t.addEventListener('click', function(){ setTheme(document.documentElement.getAttribute('data-theme')!=='dark') });
+      var form = document.getElementById('signup');
+      form.addEventListener('submit', function(e){ setTimeout(function(){ alert('Thanks — you\'re on the list!'); }, 400); });
+    })();
+  </script>
+</body>
+</html>
